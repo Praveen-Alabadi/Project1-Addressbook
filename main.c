@@ -16,8 +16,16 @@ int main() {
     	printf("6. Save contacts\n");		
         printf("7. Exit\n");
         printf("Enter your choice: ");
-        scanf("%d", &choice);
-        
+
+        if(scanf("%d", &choice) != 1)
+        {
+            printf("Invalid input. Please enter a number.\n");
+
+            while(getchar() != '\n');
+
+            continue;
+        }
+                
         switch (choice) {
             case 1:
                 createContact(&addressBook);
@@ -32,11 +40,11 @@ int main() {
                 deleteContact(&addressBook);
                 break;
             case 5:          
-                listContacts(&addressBook, sortChoice);
+                listContacts(&addressBook,0);
                 break;
             case 6:
                 printf("Saving...\n");
-                //saveContactsToFile(&addressBook);
+                saveContactsToFile(&addressBook);
                 break;   
             case 7:
                 printf("Exiting...\n");
